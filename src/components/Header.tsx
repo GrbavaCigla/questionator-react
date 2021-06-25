@@ -25,18 +25,22 @@ function Header() {
             href={supabase.auth.session() ? "#" : "/register"}
             className="px-4 font-oswald font-extrabold"
           >
-            {supabase.auth.session() ? "My profile" : "Register"}
+            {supabase.auth.session() ? "Account" : "Register"}
           </a>
         </div>
       </div>
 
-      <div className={`sm:hidden py-2 ${isDropdownOpen ? "flex" : "hidden"} flex-col border-b-4`}>
+      <div
+        className={`sm:hidden py-2 ${
+          isDropdownOpen ? "flex" : "hidden"
+        } flex-col border-b-4`}
+      >
         {/* eslint-disable-next-line */}
         <a
           href={supabase.auth.session() ? "#" : "/register"}
           className="pl-2 py-2 font-oswald font-extrabold"
         >
-          {supabase.auth.session() ? "My profile" : "Register"}
+          {supabase.auth.session() ? "Account" : "Register"}
         </a>
       </div>
     </header>

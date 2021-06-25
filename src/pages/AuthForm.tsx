@@ -51,7 +51,6 @@ function AuthForm({ _login }: IProps) {
         <h1 className="font-oswald my-2 text-3xl text-center">
           {login ? "Log in" : "Register"}
         </h1>
-        {/* <form onSubmit={submit}> */}
         <input
           className="rounded font-oswald italic text-xl p-2 border-2 border-black focus:outline-none focus:ring-4 ring-red-600 w-full sm:w-96 my-2"
           type="email"
@@ -73,7 +72,6 @@ function AuthForm({ _login }: IProps) {
         >
           {login ? "Log in" : "Register"}
         </button>
-        {/* </form> */}
         <p className="font-oswald text-center">
           {login ? "Don't" : "Already"} have an account?{" "}
           <button
