@@ -1,4 +1,4 @@
-import { useState, useEffect, Component } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
 import Question from "./Question";
 
@@ -16,8 +16,8 @@ function Feed() {
     supabase
       .from("questions")
       .select("id, title, profiles ( username )")
-      .range(0, 10)
-      .then(({ error, data }) => setFeed(data ? data : []));
+      .order("date", { ascending: false })
+      .then(({ error, data }) => setFeed(oldFeed => data ? [...oldFeed, ...data] : []));
   }, []);
 
   async function submitQuestion() {
@@ -27,8 +27,8 @@ function Feed() {
   }
 
   return (
-    <div className="flex flex-col mx-auto max-w-2xl px-2">
-      <div className="rounded border-2 border-black p-2">
+    <div className="flex flex-col max-w-2xl px-2 flex-auto" id="feed">
+      <div className="rounded border-2 border-black p-2 my-2">
         <textarea
           className="w-full p-2 font-oswald focus:outline-none border-2 rounded border-black resize-none h-32"
           onChange={(e) => setQuestion(e.target.value)}

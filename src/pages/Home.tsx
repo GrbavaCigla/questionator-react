@@ -1,11 +1,15 @@
 import Feed from "../components/Feed";
+import Groups from "../components/Groups";
 import Header from "../components/Header";
 
 function Home() {
   return (
     <>
       <Header />
-      <Feed />
+      <div className="flex flex-row justify-center items-start">
+        <Feed />
+        <Groups />
+      </div>
     </>
   );
 }
