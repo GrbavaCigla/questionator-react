@@ -9,7 +9,7 @@ function Header() {
   return (
     <header className="p-2">
       <div className="container mx-auto flex items-center justify-between">
-        <h1 className="font-oswald font-extrabold text-2xl">Questionator</h1>
+        <a href="/" className=" font-extrabold text-2xl">Questionator</a>
 
         <div className="block sm:hidden">
           <button
@@ -22,8 +22,8 @@ function Header() {
         <div className="hidden sm:flex">
           {/* eslint-disable-next-line */}
           <a
-            href={supabase.auth.session() ? "#" : "/register"}
-            className="px-4 font-oswald font-extrabold"
+            href={supabase.auth.session() ? "/account" : "/register"}
+            className="px-4  font-extrabold"
           >
             {supabase.auth.session() ? "Account" : "Register"}
           </a>
@@ -37,8 +37,8 @@ function Header() {
       >
         {/* eslint-disable-next-line */}
         <a
-          href={supabase.auth.session() ? "#" : "/register"}
-          className="pl-2 py-2 font-oswald font-extrabold"
+          href={supabase.auth.session() ? "/account" : "/register"}
+          className="pl-2 py-2  font-extrabold"
         >
           {supabase.auth.session() ? "Account" : "Register"}
         </a>

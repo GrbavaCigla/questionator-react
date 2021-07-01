@@ -48,31 +48,31 @@ function AuthForm({ _login }: IProps) {
   return (
     <div className="p-4 w-full sm:w-min absolute inset-1/2 transform -translate-x-1/2">
       <div className="transform -translate-y-1/2">
-        <h1 className="font-oswald my-2 text-3xl text-center">
+        <h1 className=" my-2 text-3xl text-center">
           {login ? "Log in" : "Register"}
         </h1>
         <input
-          className="rounded font-oswald italic text-xl p-2 border-2 border-black focus:outline-none focus:ring-4 ring-red-600 w-full sm:w-96 my-2"
+          className="rounded  italic text-xl p-2 border-2 border-black focus:outline-none focus:ring-4 ring-red-600 w-full sm:w-96 my-2"
           type="email"
           onChange={(event) => setEmail(event.target.value)}
           placeholder="E-Mail"
         />
         <input
-          className="rounded font-oswald italic text-xl p-2 border-2 border-black focus:outline-none focus:ring-4 ring-red-600 w-full sm:w-96 my-2"
+          className="rounded  italic text-xl p-2 border-2 border-black focus:outline-none focus:ring-4 ring-red-600 w-full sm:w-96 my-2"
           type="password"
           onChange={(event) => setPassword(event.target.value)}
           placeholder="Password"
         />
-        <p className="{error ? block : hidden} text-red-500 font-oswald text-center">
+        <p className="{error ? block : hidden} text-red-500  text-center">
           {errorState?.message}
         </p>
         <button
-          className="rounded bg-red-600 w-full py-2 text-white font-oswald text-2xl my-2 cursor-pointer"
+          className="rounded bg-red-600 w-full py-2 text-white  text-2xl my-2 cursor-pointer"
           onClick={submit}
         >
           {login ? "Log in" : "Register"}
         </button>
-        <p className="font-oswald text-center">
+        <p className=" text-center">
           {login ? "Don't" : "Already"} have an account?{" "}
           <button
             onClick={() => setLogin(!login)}

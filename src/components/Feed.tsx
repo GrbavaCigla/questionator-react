@@ -5,7 +5,7 @@ import Question from "./Question";
 interface IQuestion {
   id: number;
   title: string;
-  profiles: { username: string };
+  author: { username: string };
 }
 
 function Feed() {
@@ -15,9 +15,9 @@ function Feed() {
   useEffect(() => {
     supabase
       .from("questions")
-      .select("id, title, profiles ( username )")
+      .select("id, title, author:author_id ( username )")
       .order("date", { ascending: false })
-      .then(({ error, data }) => setFeed(oldFeed => data ? [...oldFeed, ...data] : []));
+      .then(({ error, data }) => {setFeed(oldFeed => data ? [...oldFeed, ...data] : []); console.log(error)});
   }, []);
 
   async function submitQuestion() {
@@ -30,19 +30,19 @@ function Feed() {
     <div className="flex flex-col max-w-2xl px-2 flex-auto" id="feed">
       <div className="rounded border-2 border-black p-2 my-2">
         <textarea
-          className="w-full p-2 font-oswald focus:outline-none border-2 rounded border-black resize-none h-32"
+          className="w-full p-2  focus:outline-none border-2 rounded border-black resize-none h-32"
           onChange={(e) => setQuestion(e.target.value)}
           placeholder="Do you have a question? Write it!"
         ></textarea>
         <button
-          className="rounded float-right bg-red-600 px-3 py-1 mt-1 text-white font-oswald text-md"
+          className="rounded float-right bg-red-600 px-3 py-1 mt-1 text-white  text-md"
           onClick={submitQuestion}
         >
           Submit
         </button>
       </div>
-      {feed.map(({ id, title, profiles }) => (
-        <Question key={id} title={title} author={profiles.username} />
+      {feed.map(({ id, title, author }) => (
+        <Question key={id} id={id} title={title} author={author.username} />
       ))}
     </div>
   );
